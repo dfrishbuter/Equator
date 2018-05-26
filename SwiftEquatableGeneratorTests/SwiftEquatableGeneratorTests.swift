@@ -12,7 +12,7 @@ class SwiftEquatableGeneratorTests: XCTestCase {
                 XCTFail("Output is not correct; expected:\n\(output.joined(separator: "\n"))\n\ngot:\n\(lines.joined(separator: "\n"))", file: file, line: line)
             }
         } catch {
-            XCTFail("Could not generate initializer: \(error)", file: file, line: line)
+            XCTFail("Could not generate equatable extension: \(error)", file: file, line: line)
         }
     }
 
