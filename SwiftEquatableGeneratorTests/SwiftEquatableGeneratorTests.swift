@@ -37,11 +37,13 @@ class SwiftEquatableGeneratorTests: XCTestCase {
     func testNoProperties() {
         assert(
             input: [
-                "",
-                ""
+                "class User: Codable {",
+                "}"
             ],
             output: [
-                "public init() {",
+                "extension User: Equatable {",
+                "    static func == (lhs: User, rhs: User) -> Bool {",
+                "    }",
                 "}"
             ])
     }
@@ -49,14 +51,18 @@ class SwiftEquatableGeneratorTests: XCTestCase {
     func testEmptyLineInBetween() {
         assert(
             input: [
-                "let a: Int",
+                "class User: Codable {",
+                "    let a: Int",
                 "",
-                "let b: Int"
+                "    let b: Int",
+                "}"
             ],
             output: [
-                "public init(a: Int, b: Int) {",
-                "    self.a = a",
-                "    self.b = b",
+                "extension User: Equatable {",
+                "    static func == (lhs: User, rhs: User) -> Bool {",
+                "        return lhs.a == rhs.a &&",
+                "               lhs.b == rhs.b",
+                "    }",
                 "}"
             ])
     }
@@ -64,13 +70,17 @@ class SwiftEquatableGeneratorTests: XCTestCase {
     func testSingleAccessModifier() {
         assert(
             input: [
-                "internal let a: Int",
-                "private let b: Int"
+                "class User: Codable {",
+                "    internal let a: Int",
+                "    private let b: Int",
+                "}"
             ],
             output: [
-                "public init(a: Int, b: Int) {",
-                "    self.a = a",
-                "    self.b = b",
+                "extension User: Equatable {",
+                "    static func == (lhs: User, rhs: User) -> Bool {",
+                "        return lhs.a == rhs.a &&",
+                "               lhs.b == rhs.b",
+                "    }",
                 "}"
             ])
     }
@@ -78,13 +88,17 @@ class SwiftEquatableGeneratorTests: XCTestCase {
     func testDoubleAccessModifier() {
         assert(
             input: [
-                "public internal(set) let a: Int",
-                "public private(set) let b: Int"
+                "class User: Codable {",
+                "    public internal(set) let a: Int",
+                "    public private(set) let b: Int",
+                "}"
             ],
             output: [
-                "public init(a: Int, b: Int) {",
-                "    self.a = a",
-                "    self.b = b",
+                "extension User: Equatable {",
+                "    static func == (lhs: User, rhs: User) -> Bool {",
+                "        return lhs.a == rhs.a &&",
+                "               lhs.b == rhs.b",
+                "    }",
                 "}"
             ])
     }
@@ -93,34 +107,45 @@ class SwiftEquatableGeneratorTests: XCTestCase {
     func testCommentLine() {
         assert(
             input: [
-                "/// a very important property",
-                "let a: Int",
-                "// this one, not so much",
-                "let b: Int",
-                "/*",
-                " * pay attention to this one",
-                " */",
-                "let c: IBOutlet!"
+                "/// a very important class",
+                "class User: Codable {",
+                "    /// a very important property",
+                "    let a: Int",
+                "    // this one, not so much",
+                "    let b: Int",
+                "    /*",
+                "     * pay attention to this one",
+                "     */",
+                "    let c: String",
+                "}"
             ],
             output: [
-                "public init(a: Int, b: Int, c: IBOutlet!) {",
-                "    self.a = a",
-                "    self.b = b",
-                "    self.c = c",
+                "extension User: Equatable {",
+                "    static func == (lhs: User, rhs: User) -> Bool {",
+                "        return lhs.a == rhs.a &&",
+                "               lhs.b == rhs.b &&",
+                "               lhs.c == rhs.c",
+                "    }",
                 "}"
             ])
     }
   
     func testDynamicVar() {
         assert(
-            input: ["dynamic var hello: String",
-                    "dynamic var a: Int?",
-                    "var b: Float"],
+            input: [
+                "class User: Codable {",
+                "    dynamic var hello: String",
+                "    dynamic var a: Int?",
+                "    var b: Float",
+                "}"
+            ],
             output: [
-                "public init(hello: String, a: Int?, b: Float) {",
-                "    self.hello = hello",
-                "    self.a = a",
-                "    self.b = b",
+                "extension User: Equatable {",
+                "    static func == (lhs: User, rhs: User) -> Bool {",
+                "        return lhs.hello == rhs.hello &&",
+                "               lhs.a == rhs.a &&",
+                "               lhs.b == rhs.b",
+                "    }",
                 "}"
             ])
     }
@@ -128,15 +153,19 @@ class SwiftEquatableGeneratorTests: XCTestCase {
     func testEscapingClosure() {
         assert(
             input: [
-                "let a: (String) -> Int?",
-                "let b: () -> () -> Void",
-                "let c: ((String, Int))->()",
+                "class Handler {",
+                "    let a: (String) -> Int?",
+                "    let b: () -> () -> Void",
+                "    let c: ((String, Int))->()",
+                "}"
             ],
             output: [
-                "public init(a: @escaping (String) -> Int?, b: @escaping () -> () -> Void, c: @escaping ((String, Int))->()) {",
-                "    self.a = a",
-                "    self.b = b",
-                "    self.c = c",
+                "extension Handler: Equatable {",
+                "    static func == (lhs: Handler, rhs: Handler) -> Bool {",
+                "        return lhs.a == rhs.a &&",
+                "               lhs.b == rhs.b &&",
+                "               lhs.c == rhs.c",
+                "    }",
                 "}"
             ])
     }
@@ -144,15 +173,19 @@ class SwiftEquatableGeneratorTests: XCTestCase {
     func testNoEscapingAttribute() {
         assert(
             input: [
-                "let a: (() -> Void)?",
-                "let b: [() -> Void]",
-                "let c: (()->())!"
+                "class Handler {",
+                "    let a: (() -> Void)?",
+                "    let b: [() -> Void]",
+                "    let c: (()->())!",
+                "}"
             ],
             output: [
-                "public init(a: (() -> Void)?, b: [() -> Void], c: (()->())!) {",
-                "    self.a = a",
-                "    self.b = b",
-                "    self.c = c",
+                "extension Handler: Equatable {",
+                "    static func == (lhs: Handler, rhs: Handler) -> Bool {",
+                "        return lhs.a == rhs.a &&",
+                "               lhs.b == rhs.b &&",
+                "               lhs.c == rhs.c",
+                "    }",
                 "}"
             ])
     }

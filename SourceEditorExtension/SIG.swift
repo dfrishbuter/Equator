@@ -14,7 +14,9 @@ enum SIGError: Swift.Error {
 let accessModifiers = ["open", "public", "internal", "private", "fileprivate"]
 
 func generate(selection: [String], indentation: String, leadingIndent: String) throws -> [String] {
-    guard let definitionLine = selection.first else {
+    guard let definitionLine = selection.first(where: { line -> Bool in
+        return (line.contains("class") || line.contains("struct")) && line.contains("{")
+    }) else {
         throw SIGError.parseError
     }
     let scanner = Scanner(string: definitionLine)
