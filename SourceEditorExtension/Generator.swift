@@ -39,7 +39,12 @@ func generate(selection: [String], indentation: String, leadingIndent: String) t
     guard let definitionName = dampName else {
         throw GeneratorError.parseError
     }
-    
+
+    let vars = try variables(fromSelection: selection)
+    return objectLines(definitionName: definitionName, variables: vars, indentation: indentation)
+}
+
+private func variables(fromSelection selection: [String]) throws -> [(String, String)] {
     var variables = [(String, String)]()
 
     for line in selection.dropFirst() {
@@ -68,7 +73,7 @@ func generate(selection: [String], indentation: String, leadingIndent: String) t
         variables.append((variableName, variableType))
     }
 
-    return objectLines(definitionName: definitionName, variables: variables, indentation: indentation)
+    return variables
 }
 
 private func objectLines(definitionName: String, variables: [(String, String)], indentation: String) -> [String] {
