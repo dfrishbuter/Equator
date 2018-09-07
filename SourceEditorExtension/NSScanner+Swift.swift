@@ -10,7 +10,7 @@ extension Scanner {
     // MARK: Strings
 
     /// Returns a string, scanned as long as characters from a given character set are encountered, or `nil` if none are found.
-    func scanCharacters(from set: CharacterSet) -> String? {
+    @objc func scanCharacters(from set: CharacterSet) -> String? {
         var value: NSString? = ""
         if scanCharacters(from: set, into: &value) {
             return value as String?
@@ -19,7 +19,7 @@ extension Scanner {
     }
 
     /// Returns a string, scanned until a character from a given character set are encountered, or the remainder of the scanner's string. Returns `nil` if the scanner is already `atEnd`.
-    func scanUpToCharacters(from set: CharacterSet) -> String? {
+    @objc func scanUpToCharacters(from set: CharacterSet) -> String? {
         var value: NSString? = ""
         if scanUpToCharacters(from: set, into: &value) {
             return value as String?
@@ -28,7 +28,7 @@ extension Scanner {
     }
 
     /// Returns the given string if scanned, or `nil` if not found.
-    func scanString(_ str: String) -> String? {
+    @objc func scanString(_ str: String) -> String? {
         var value: NSString? = ""
         if scanString(str, into: &value) {
             return value as String?
@@ -37,7 +37,7 @@ extension Scanner {
     }
 
     /// Returns a string, scanned until the given string is found, or the remainder of the scanner's string. Returns `nil` if the scanner is already `atEnd`.
-    func scanUpTo(_ str: String) -> String? {
+    @objc func scanUpTo(_ str: String) -> String? {
         var value: NSString? = ""
         if scanUpTo(str, into: &value) {
             return value as String?
@@ -61,6 +61,15 @@ extension Scanner {
         var value: Float = 0.0
         if scanFloat(&value) {
             return value
+        }
+        return nil
+    }
+
+    /// Returns a Float if scanned, or `nil` if not found.
+    func scanCGFloat() -> CGFloat? {
+        var value: Double = 0.0
+        if scanDouble(&value) {
+            return CGFloat(value)
         }
         return nil
     }
@@ -130,6 +139,15 @@ extension Scanner {
         return nil
     }
 
+    /// Returns a Float if scanned in hexadecimal, or `nil` if not found.
+    func scanHexCGFloat() -> CGFloat? {
+        var value: Double = 0.0
+        if scanHexDouble(&value) {
+            return CGFloat(value)
+        }
+        return nil
+    }
+
     /// Returns a UInt32 if scanned in hexadecimal, or `nil` if not found.
     func scanHexInt32() -> UInt32? {
         var value: UInt32 = 0
@@ -148,7 +166,7 @@ extension Scanner {
         return nil
     }
 
-    typealias Position = (line: Range<String.CharacterView.Index>, row: Int, pos: Int)
+    typealias Position = (line: Range<String.Index>, row: Int, pos: Int)
     var position: Position {
         let index = string.index(string.startIndex, offsetBy: scanLocation)
         var head = string.startIndex..<string.startIndex
