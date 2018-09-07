@@ -5,15 +5,22 @@
 import XCTest
 
 class SwiftEquatableGeneratorTests: XCTestCase {
+
     func assert(input: [String], output: [String], file: StaticString = #file, line: UInt = #line) {
         do {
             let lines = try generate(selection: input, indentation: "    ", leadingIndent: "")
-            if(lines != output) {
+            if (lines != output) {
                 XCTFail("Output is not correct; expected:\n\(output.joined(separator: "\n"))\n\ngot:\n\(lines.joined(separator: "\n"))", file: file, line: line)
             }
         } catch {
             XCTFail("Could not generate equatable extension: \(error)", file: file, line: line)
         }
+    }
+
+    func testStringMultiplier() {
+        XCTAssertEqual("test" * 0, "")
+        XCTAssertEqual("test" * 1, "test")
+        XCTAssertEqual("test" * 2, "testtest")
     }
 
     func testNoAccessModifiers() {
@@ -103,7 +110,6 @@ class SwiftEquatableGeneratorTests: XCTestCase {
             ])
     }
 
-
     func testCommentLine() {
         assert(
             input: [
@@ -150,6 +156,44 @@ class SwiftEquatableGeneratorTests: XCTestCase {
             ])
     }
 
+    func testWeakVar() {
+        assert(
+            input: [
+                "class User: Codable {",
+                "    weak var hello: String",
+                "    var a: Int?",
+                "}"
+            ],
+            output: [
+                "extension User: Equatable {",
+                "    static func == (lhs: User, rhs: User) -> Bool {",
+                "        return lhs.hello == rhs.hello &&",
+                "               lhs.a == rhs.a",
+                "    }",
+                "}"
+            ])
+    }
+
+    func testMethod() {
+        assert(
+            input: [
+                "class User: Codable {",
+                "    let a: Int",
+                "    let b: Int",
+                "    func doSomething(with value: Int) {",
+                "    }",
+                "}"
+            ],
+            output: [
+                "extension User: Equatable {",
+                "    static func == (lhs: User, rhs: User) -> Bool {",
+                "        return lhs.a == rhs.a &&",
+                "               lhs.b == rhs.b",
+                "    }",
+                "}"
+            ])
+    }
+
     func testEscapingClosure() {
         assert(
             input: [
@@ -185,6 +229,80 @@ class SwiftEquatableGeneratorTests: XCTestCase {
                 "        return lhs.a == rhs.a &&",
                 "               lhs.b == rhs.b &&",
                 "               lhs.c == rhs.c",
+                "    }",
+                "}"
+            ])
+    }
+
+    func testEnum() {
+        assert(
+            input: [
+                "enum Kind {",
+                "    case a",
+                "    case b",
+                "}"
+            ],
+            output: [
+                "extension Kind: Equatable {",
+                "    static func == (lhs: Kind, rhs: Kind) -> Bool {",
+                "        switch (lhs, rhs) {",
+                "        case (.a, .a):",
+                "            return true",
+                "        case (.b, .b):",
+                "            return true",
+                "        default:",
+                "            return false",
+                "        }",
+                "    }",
+                "}"
+            ])
+    }
+
+    func testEnumWithConformance() {
+        assert(
+            input: [
+                "enum Kind: Codable {",
+                "    case a",
+                "    case b",
+                "}"
+            ],
+            output: [
+                "extension Kind: Equatable {",
+                "    static func == (lhs: Kind, rhs: Kind) -> Bool {",
+                "        switch (lhs, rhs) {",
+                "        case (.a, .a):",
+                "            return true",
+                "        case (.b, .b):",
+                "            return true",
+                "        default:",
+                "            return false",
+                "        }",
+                "    }",
+                "}"
+            ])
+    }
+
+    func testEnumWithMethod() {
+        assert(
+            input: [
+                "enum Kind: Codable {",
+                "    case a",
+                "    case b",
+                "    func doSomething(with value: Int) {",
+                "    }",
+                "}"
+            ],
+            output: [
+                "extension Kind: Equatable {",
+                "    static func == (lhs: Kind, rhs: Kind) -> Bool {",
+                "        switch (lhs, rhs) {",
+                "        case (.a, .a):",
+                "            return true",
+                "        case (.b, .b):",
+                "            return true",
+                "        default:",
+                "            return false",
+                "        }",
                 "    }",
                 "}"
             ])
