@@ -9,35 +9,31 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Swift.Error?) -> Void) {
         do {
-            try generateInitializer(invocation: invocation)
+            try generateEquatable(invocation: invocation)
             completionHandler(nil)
         } catch {
             completionHandler(error)
         }
     }
 
-    private func generateInitializer(invocation: XCSourceEditorCommandInvocation) throws {
+    private func generateEquatable(invocation: XCSourceEditorCommandInvocation) throws {
         guard invocation.buffer.contentUTI == "public.swift-source" else {
-            throw SIGError.notSwiftLanguage
+            throw GeneratorError.notSwiftLanguage
         }
         guard let selection = invocation.buffer.selections.firstObject as? XCSourceTextRange else {
-            throw SIGError.noSelection
+            throw GeneratorError.noSelection
         }
 
-        print(selection.start.line, selection.start.column)
-        print(selection.end.line, selection.end.column)
-
-        let selectedText: [String]
+        var selectedText: [String]
         if selection.start.line == selection.end.line {
-            selectedText = [String(
-                (invocation.buffer.lines[selection.start.line] as! String).utf8
-                    .prefix(selection.end.column)
-                    .dropFirst(selection.start.column)
-                )!]
+            let startLine = invocation.buffer.lines[selection.start.line] as! String
+            selectedText = [String(startLine.utf8.prefix(selection.end.column).dropFirst(selection.start.column))!]
         } else {
             selectedText = [String((invocation.buffer.lines[selection.start.line] as! String).utf8.dropFirst(selection.start.column))!]
-                + ((selection.start.line+1)..<selection.end.line).map { invocation.buffer.lines[$0] as! String }
-                + [String((invocation.buffer.lines[selection.end.line] as! String).utf8.prefix(selection.end.column))!]
+            selectedText += ((selection.start.line + 1)..<selection.end.line).map {
+                invocation.buffer.lines[$0] as! String
+            }
+            selectedText += [String((invocation.buffer.lines[selection.end.line] as! String).utf8.prefix(selection.end.column))!]
         }
 
         var initializer = try generate(
@@ -61,8 +57,6 @@ private func indentSequence(for buffer: XCSourceTextBuffer) -> String {
 
 private func leadingIndentation(from selection: XCSourceTextRange, in buffer: XCSourceTextBuffer) -> String {
     let firstLineOfSelection = buffer.lines[selection.start.line] as! String
-    
-
     if let nonWhitespace = firstLineOfSelection.rangeOfCharacter(from: CharacterSet.whitespaces.inverted) {
         return String(firstLineOfSelection.prefix(upTo: nonWhitespace.lowerBound))
     } else {
