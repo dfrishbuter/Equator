@@ -9,10 +9,13 @@ class SwiftEquatableGeneratorTests: XCTestCase {
     func assert(input: [String], output: [String], file: StaticString = #file, line: UInt = #line) {
         do {
             let lines = try generate(selection: input, indentation: "    ", leadingIndent: "")
-            if (lines != output) {
-                XCTFail("Output is not correct; expected:\n\(output.joined(separator: "\n"))\n\ngot:\n\(lines.joined(separator: "\n"))", file: file, line: line)
+            if lines != output {
+                let joinedOutput = output.joined(separator: "\n")
+                let joinedLines = lines.joined(separator: "\n")
+                XCTFail("Output is not correct; expected:\n\(joinedOutput)\n\ngot:\n\(joinedLines)", file: file, line: line)
             }
-        } catch {
+        }
+        catch {
             XCTFail("Could not generate equatable extension: \(error)", file: file, line: line)
         }
     }
@@ -135,7 +138,7 @@ class SwiftEquatableGeneratorTests: XCTestCase {
                 "}"
             ])
     }
-  
+
     func testDynamicVar() {
         assert(
             input: [
