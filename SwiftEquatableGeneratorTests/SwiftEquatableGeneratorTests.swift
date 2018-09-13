@@ -285,6 +285,30 @@ class SwiftEquatableGeneratorTests: XCTestCase {
             ])
     }
 
+    func testEnumWithAssociatedValues() {
+        assert(
+            input: [
+                "enum Kind: Codable {",
+                "    case a(id: UInt64, name: String)",
+                "    case b(id: UInt64, name: String)",
+                "}"
+            ],
+            output: [
+                "extension Kind: Equatable {",
+                "    static func == (lhs: Kind, rhs: Kind) -> Bool {",
+                "        switch (lhs, rhs) {",
+                "        case (.a, .a):",
+                "            return true",
+                "        case (.b, .b):",
+                "            return true",
+                "        default:",
+                "            return false",
+                "        }",
+                "    }",
+                "}"
+            ])
+    }
+
     func testEnumWithMethod() {
         assert(
             input: [
