@@ -101,9 +101,7 @@ private func objectLines(definitionName: String, variables: [(String, String)], 
 }
 
 private func generateForEnum(selection: [String], indentation: String, leadingIndent: String) throws -> [String] {
-    guard let definitionLine = selection.first(where: { line -> Bool in
-        return line.contains("enum") && line.contains("{")
-    }) else {
+    guard let definitionLine = selection.first(where: { $0.contains("enum") && $0.contains("{") }) else {
         throw GeneratorError.parseError
     }
     let scanner = Scanner(string: definitionLine)

@@ -7,6 +7,19 @@ import Foundation
 
 extension Scanner {
 
+    typealias Position = (line: Range<String.Index>, row: Int, pos: Int)
+
+    var position: Position {
+        let index = string.index(string.startIndex, offsetBy: scanLocation)
+        var head = string.startIndex..<string.startIndex
+        var row = 0
+        while head.upperBound <= index {
+            head = string.lineRange(for: head.upperBound..<head.upperBound)
+            row += 1
+        }
+        return (head, row, string.distance(from: head.lowerBound, to: index) + 1)
+    }
+
     // MARK: Strings
 
     /// Returns a string, scanned as long as characters from a given character set are encountered, or `nil` if none are found.
@@ -104,7 +117,7 @@ extension Scanner {
     }
 
     /// Returns a UInt64 if scanned, or `nil` if not found.
-    func scanUnsignedLongLong() -> UInt64? {
+    func scanUInt64() -> UInt64? {
         var value: UInt64 = 0
         if scanUnsignedLongLong(&value) {
             return value
@@ -166,17 +179,5 @@ extension Scanner {
             return value
         }
         return nil
-    }
-
-    typealias Position = (line: Range<String.Index>, row: Int, pos: Int)
-    var position: Position {
-        let index = string.index(string.startIndex, offsetBy: scanLocation)
-        var head = string.startIndex..<string.startIndex
-        var row = 0
-        while head.upperBound <= index {
-            head = string.lineRange(for: head.upperBound..<head.upperBound)
-            row += 1
-        }
-        return (head, row, string.distance(from: head.lowerBound, to: index) + 1)
     }
 }
