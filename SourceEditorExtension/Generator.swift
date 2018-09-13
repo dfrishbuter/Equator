@@ -131,8 +131,7 @@ private func generateForEnum(selection: [String], indentation: String, leadingIn
         guard scanner.scanString("case", into: nil) else {
             continue
         }
-
-        guard let caseName = scanner.scanUpTo("\n") else {
+        guard let caseName = scanner.string.contains("(") ? scanner.scanUpTo("(") : scanner.scanUpTo("\n") else {
             throw GeneratorError.parseError
         }
         caseNames.append(caseName)
