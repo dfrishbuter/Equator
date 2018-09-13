@@ -7,11 +7,12 @@ import XcodeKit
 
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
-    func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Swift.Error?) -> Void) {
+    func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void) {
         do {
             try generateEquatable(invocation: invocation)
             completionHandler(nil)
-        } catch {
+        }
+        catch {
             completionHandler(error)
         }
     }
@@ -26,14 +27,23 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
         var selectedText: [String]
         if selection.start.line == selection.end.line {
-            let startLine = invocation.buffer.lines[selection.start.line] as! String
-            selectedText = [String(startLine.utf8.prefix(selection.end.column).dropFirst(selection.start.column))!]
-        } else {
-            selectedText = [String((invocation.buffer.lines[selection.start.line] as! String).utf8.dropFirst(selection.start.column))!]
-            selectedText += ((selection.start.line + 1)..<selection.end.line).map {
-                invocation.buffer.lines[$0] as! String
+            guard let startLine = invocation.buffer.lines[selection.start.line] as? String else {
+                throw GeneratorError.noSelection
             }
-            selectedText += [String((invocation.buffer.lines[selection.end.line] as! String).utf8.prefix(selection.end.column))!]
+            selectedText = [String(startLine.utf8.prefix(selection.end.column).dropFirst(selection.start.column))!]
+        }
+        else {
+            guard let startLine = invocation.buffer.lines[selection.start.line] as? String,
+                  let startText = String(startLine.utf8.dropFirst(selection.start.column)),
+                  let endLine = invocation.buffer.lines[selection.end.line] as? String,
+                  let endText = String(endLine.utf8.prefix(selection.end.column)) else {
+                throw GeneratorError.noSelection
+            }
+            selectedText = [startText]
+            selectedText += ((selection.start.line + 1)..<selection.end.line).compactMap { lineNumber -> String? in
+                invocation.buffer.lines[lineNumber] as? String
+            }
+            selectedText += [endText]
         }
 
         var initializer = try generate(
@@ -44,22 +54,23 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
 
         initializer.insert("", at: 0) // separate from selection with empty line
 
-        let targetRange = selection.end.line + 1 ..< selection.end.line + 1 + initializer.count
+        let targetRange = (selection.end.line + 1) ..< (selection.end.line + 1 + initializer.count)
         invocation.buffer.lines.insert(initializer, at: IndexSet(integersIn: targetRange))
     }
 }
 
 private func indentSequence(for buffer: XCSourceTextBuffer) -> String {
-    return buffer.usesTabsForIndentation
-        ? "\t"
-        : String(repeating: " ", count: buffer.indentationWidth)
+    return buffer.usesTabsForIndentation ? "\t" : String(repeating: " ", count: buffer.indentationWidth)
 }
 
 private func leadingIndentation(from selection: XCSourceTextRange, in buffer: XCSourceTextBuffer) -> String {
-    let firstLineOfSelection = buffer.lines[selection.start.line] as! String
+    guard let firstLineOfSelection = buffer.lines[selection.start.line] as? String else {
+        return ""
+    }
     if let nonWhitespace = firstLineOfSelection.rangeOfCharacter(from: CharacterSet.whitespaces.inverted) {
         return String(firstLineOfSelection.prefix(upTo: nonWhitespace.lowerBound))
-    } else {
+    }
+    else {
         return ""
     }
 }

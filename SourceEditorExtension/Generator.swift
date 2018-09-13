@@ -4,7 +4,7 @@
 
 import Foundation
 
-enum GeneratorError: Swift.Error {
+enum GeneratorError: Error {
     case notSwiftLanguage
     case noSelection
     case invalidSelection
@@ -50,7 +50,7 @@ private func variables(fromSelection selection: [String]) throws -> [(String, St
     for line in selection.dropFirst() {
         let scanner = Scanner(string: line)
 
-        let _ = scanner.scanString("weak", into: nil)
+        _ = scanner.scanString("weak", into: nil)
         for modifier in accessModifiers {
             if scanner.scanString(modifier, into: nil) {
                 break
@@ -58,7 +58,7 @@ private func variables(fromSelection selection: [String]) throws -> [(String, St
         }
         for modifier in accessModifiers {
             if scanner.scanString(modifier, into: nil) {
-                guard let _ = scanner.scanUpTo(")"), let _ = scanner.scanString(")") else {
+                guard scanner.scanUpTo(")") != nil, scanner.scanString(")") != nil else {
                     throw GeneratorError.parseError
                 }
             }
@@ -165,7 +165,8 @@ private func addEscapingAttributeIfNeeded(to typeString: String) -> String {
     let predicate = NSPredicate(format: "SELF MATCHES %@", "\\(.*\\)->.*")
     if predicate.evaluate(with: typeString.replacingOccurrences(of: " ", with: "")), !isOptional(typeString: typeString) {
         return "@escaping " + typeString
-    } else {
+    }
+    else {
         return typeString
     }
 }
@@ -175,26 +176,27 @@ private func isOptional(typeString: String) -> Bool {
         return false
     }
     var balance = 0
-    var indexOfClosingBraceMatchingFirstOpenBrace: Int?
+    var closingBraceIndexMatchingFirstOpenBrace: Int?
 
     for (index, character) in typeString.enumerated() {
         if character == "(" {
             balance += 1
-        } else if character == ")" {
+        }
+        else if character == ")" {
             balance -= 1
         }
         if balance == 0 {
-            indexOfClosingBraceMatchingFirstOpenBrace = index
+            closingBraceIndexMatchingFirstOpenBrace = index
             break
         }
     }
 
-    return indexOfClosingBraceMatchingFirstOpenBrace == typeString.count - 2
+    return closingBraceIndexMatchingFirstOpenBrace == typeString.count - 2
 }
 
 extension String {
     static func * (lhs: String, rhs: Int) -> String {
-        return Array(0..<rhs).reduce(into: "") { result, element in
+        return Array(0..<rhs).reduce(into: "") { result, _ in
             result += lhs
         }
     }

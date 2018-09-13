@@ -18,7 +18,8 @@ extension Scanner {
         return nil
     }
 
-    /// Returns a string, scanned until a character from a given character set are encountered, or the remainder of the scanner's string. Returns `nil` if the scanner is already `atEnd`.
+    /// Returns a string, scanned until a character from a given character set are encountered, or the remainder of the scanner's string.
+    /// Returns `nil` if the scanner is already `atEnd`.
     @objc func scanUpToCharacters(from set: CharacterSet) -> String? {
         var value: NSString? = ""
         if scanUpToCharacters(from: set, into: &value) {
@@ -36,7 +37,8 @@ extension Scanner {
         return nil
     }
 
-    /// Returns a string, scanned until the given string is found, or the remainder of the scanner's string. Returns `nil` if the scanner is already `atEnd`.
+    /// Returns a string, scanned until the given string is found, or the remainder of the scanner's string.
+    /// Returns `nil` if the scanner is already `atEnd`.
     @objc func scanUpTo(_ str: String) -> String? {
         var value: NSString? = ""
         if scanUpTo(str, into: &value) {
