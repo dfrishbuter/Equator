@@ -1,0 +1,1 @@
+# SwiftEquatableGenerator
