@@ -16,7 +16,7 @@
 4. Restart the XCode
 5. Open XCode Editor menu. Here should be new item named **Equator**.
 
-# Author ⭐️
+# Author ✍️
 
 Dmitry Frishbuter, dmitry.frishbuter@gmail.com
 
