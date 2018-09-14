@@ -20,13 +20,22 @@
 Select all lines of target class/struct/enum body.
 
 ```swift
-struct MyStruct {            <- Start of selection
-    public var a: String
-    public var b: Int
+struct User {            <- Start of selection
+    public var name: String
+    public var id: Int
 }                            <- End of selection
 ```
 
-Go to `Editor` -> `Equator` -> `Generate Swift Equatable`
+Go to `Editor` -> `Equator` -> `Generate Swift Equatable` and you'll achieve:
+
+```swift
+extension User: Equatable {
+    static func == (lhs: User, rhs: User) -> Bool {
+        return lhs.name == rhs.name &&
+               lhs.id == rhs.id
+    }
+}
+```
 
 # Author ✍️
 
