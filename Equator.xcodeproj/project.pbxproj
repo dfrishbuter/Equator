@@ -57,7 +57,7 @@
 /* Begin PBXFileReference section */
 		6D12FBF320B92D800026F270 /* EquatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquatorTests.swift; sourceTree = "<group>"; };
 		6D12FBF420B92D800026F270 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D5230B541D85660400504FFF /* Swift Equatable Generator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift Equatable Generator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5230B541D85660400504FFF /* Equator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Equator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5230B571D85660400504FFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5230B591D85660400504FFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5230B5C1D85660400504FFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 		D5230B551D85660400504FFF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D5230B541D85660400504FFF /* Swift Equatable Generator.app */,
+				D5230B541D85660400504FFF /* Equator.app */,
 				D5230B681D85661200504FFF /* Generate Swift Equatable.appex */,
 				D55EA0B41E0A568E005472E8 /* EquatorTests.xctest */,
 			);
@@ -189,7 +189,7 @@
 			);
 			name = Equator;
 			productName = SwiftEquatableGenerator;
-			productReference = D5230B541D85660400504FFF /* Swift Equatable Generator.app */;
+			productReference = D5230B541D85660400504FFF /* Equator.app */;
 			productType = "com.apple.product-type.application";
 		};
 		D5230B671D85661200504FFF /* SourceEditorExtension */ = {
@@ -499,7 +499,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Equator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rosberry.equator;
-				PRODUCT_NAME = "Swift Equatable Generator";
+				PRODUCT_NAME = Equator;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -518,7 +518,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Equator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rosberry.equator;
-				PRODUCT_NAME = "Swift Equatable Generator";
+				PRODUCT_NAME = Equator;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 			};
