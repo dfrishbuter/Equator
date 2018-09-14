@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6D12FBF720B92D800026F270 /* SwiftEquatableGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12FBF320B92D800026F270 /* SwiftEquatableGeneratorTests.swift */; };
+		6D12FBF720B92D800026F270 /* EquatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D12FBF320B92D800026F270 /* EquatorTests.swift */; };
 		6D12FBF820B92D800026F270 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D12FBF420B92D800026F270 /* Info.plist */; };
 		6D12FBF920B92D800026F270 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D12FBF420B92D800026F270 /* Info.plist */; };
 		D5230B581D85660400504FFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5230B571D85660400504FFF /* AppDelegate.swift */; };
@@ -55,7 +55,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6D12FBF320B92D800026F270 /* SwiftEquatableGeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftEquatableGeneratorTests.swift; sourceTree = "<group>"; };
+		6D12FBF320B92D800026F270 /* EquatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquatorTests.swift; sourceTree = "<group>"; };
 		6D12FBF420B92D800026F270 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5230B541D85660400504FFF /* Swift Equatable Generator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift Equatable Generator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5230B571D85660400504FFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 		D5230B731D85661200504FFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D5230B7B1D85662E00504FFF /* NSScanner+Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSScanner+Swift.swift"; sourceTree = "<group>"; };
 		D55EA0A01E0A5659005472E8 /* Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generator.swift; sourceTree = "<group>"; };
-		D55EA0B41E0A568E005472E8 /* SwiftEquatableGeneratorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftEquatableGeneratorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D55EA0B41E0A568E005472E8 /* EquatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EquatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,21 +99,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6D12FBF220B92D800026F270 /* SwiftEquatableGeneratorTests */ = {
+		6D12FBF220B92D800026F270 /* EquatorTests */ = {
 			isa = PBXGroup;
 			children = (
-				6D12FBF320B92D800026F270 /* SwiftEquatableGeneratorTests.swift */,
+				6D12FBF320B92D800026F270 /* EquatorTests.swift */,
 				6D12FBF420B92D800026F270 /* Info.plist */,
 			);
-			path = SwiftEquatableGeneratorTests;
+			path = EquatorTests;
 			sourceTree = "<group>";
 		};
 		D5230B4B1D85660400504FFF = {
 			isa = PBXGroup;
 			children = (
-				D5230B561D85660400504FFF /* SwiftEquatableGenerator */,
+				D5230B561D85660400504FFF /* Equator */,
 				D5230B6C1D85661200504FFF /* SourceEditorExtension */,
-				6D12FBF220B92D800026F270 /* SwiftEquatableGeneratorTests */,
+				6D12FBF220B92D800026F270 /* EquatorTests */,
 				D5230B691D85661200504FFF /* Frameworks */,
 				D5230B551D85660400504FFF /* Products */,
 			);
@@ -124,12 +124,12 @@
 			children = (
 				D5230B541D85660400504FFF /* Swift Equatable Generator.app */,
 				D5230B681D85661200504FFF /* Generate Swift Equatable.appex */,
-				D55EA0B41E0A568E005472E8 /* SwiftEquatableGeneratorTests.xctest */,
+				D55EA0B41E0A568E005472E8 /* EquatorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D5230B561D85660400504FFF /* SwiftEquatableGenerator */ = {
+		D5230B561D85660400504FFF /* Equator */ = {
 			isa = PBXGroup;
 			children = (
 				D5230B571D85660400504FFF /* AppDelegate.swift */,
@@ -137,7 +137,7 @@
 				D5230B5B1D85660400504FFF /* MainMenu.xib */,
 				D5230B5E1D85660400504FFF /* Info.plist */,
 			);
-			path = SwiftEquatableGenerator;
+			path = Equator;
 			sourceTree = "<group>";
 		};
 		D5230B691D85661200504FFF /* Frameworks */ = {
@@ -172,9 +172,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D5230B531D85660400504FFF /* SwiftEquatableGenerator */ = {
+		D5230B531D85660400504FFF /* Equator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D5230B611D85660400504FFF /* Build configuration list for PBXNativeTarget "SwiftEquatableGenerator" */;
+			buildConfigurationList = D5230B611D85660400504FFF /* Build configuration list for PBXNativeTarget "Equator" */;
 			buildPhases = (
 				D5230B501D85660400504FFF /* Sources */,
 				D5230B511D85660400504FFF /* Frameworks */,
@@ -187,7 +187,7 @@
 			dependencies = (
 				D5230B751D85661200504FFF /* PBXTargetDependency */,
 			);
-			name = SwiftEquatableGenerator;
+			name = Equator;
 			productName = SwiftEquatableGenerator;
 			productReference = D5230B541D85660400504FFF /* Swift Equatable Generator.app */;
 			productType = "com.apple.product-type.application";
@@ -209,9 +209,9 @@
 			productReference = D5230B681D85661200504FFF /* Generate Swift Equatable.appex */;
 			productType = "com.apple.product-type.xcode-extension";
 		};
-		D55EA0B31E0A568E005472E8 /* SwiftEquatableGeneratorTests */ = {
+		D55EA0B31E0A568E005472E8 /* EquatorTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D55EA0BB1E0A568E005472E8 /* Build configuration list for PBXNativeTarget "SwiftEquatableGeneratorTests" */;
+			buildConfigurationList = D55EA0BB1E0A568E005472E8 /* Build configuration list for PBXNativeTarget "EquatorTests" */;
 			buildPhases = (
 				D55EA0B01E0A568E005472E8 /* Sources */,
 				D55EA0B11E0A568E005472E8 /* Frameworks */,
@@ -222,9 +222,9 @@
 			dependencies = (
 				D55EA0BA1E0A568E005472E8 /* PBXTargetDependency */,
 			);
-			name = SwiftEquatableGeneratorTests;
+			name = EquatorTests;
 			productName = SwiftEquatableGeneratorTests;
-			productReference = D55EA0B41E0A568E005472E8 /* SwiftEquatableGeneratorTests.xctest */;
+			productReference = D55EA0B41E0A568E005472E8 /* EquatorTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -257,7 +257,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D5230B4F1D85660400504FFF /* Build configuration list for PBXProject "SwiftEquatableGenerator" */;
+			buildConfigurationList = D5230B4F1D85660400504FFF /* Build configuration list for PBXProject "Equator" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -270,9 +270,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D5230B531D85660400504FFF /* SwiftEquatableGenerator */,
+				D5230B531D85660400504FFF /* Equator */,
 				D5230B671D85661200504FFF /* SourceEditorExtension */,
-				D55EA0B31E0A568E005472E8 /* SwiftEquatableGeneratorTests */,
+				D55EA0B31E0A568E005472E8 /* EquatorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -348,7 +348,7 @@
 			files = (
 				D55EA0BF1E0A6030005472E8 /* NSScanner+Swift.swift in Sources */,
 				D55EA0BE1E0A5695005472E8 /* Generator.swift in Sources */,
-				6D12FBF720B92D800026F270 /* SwiftEquatableGeneratorTests.swift in Sources */,
+				6D12FBF720B92D800026F270 /* EquatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,7 +362,7 @@
 		};
 		D55EA0BA1E0A568E005472E8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D5230B531D85660400504FFF /* SwiftEquatableGenerator */;
+			target = D5230B531D85660400504FFF /* Equator */;
 			targetProxy = D55EA0B91E0A568E005472E8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -496,9 +496,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = GPVA8JVMU3;
-				INFOPLIST_FILE = "$(SRCROOT)/SwiftEquatableGenerator/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Equator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rosberry.equatablegen;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rosberry.equator;
 				PRODUCT_NAME = "Swift Equatable Generator";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -515,9 +515,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = GPVA8JVMU3;
-				INFOPLIST_FILE = "$(SRCROOT)/SwiftEquatableGenerator/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Equator/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.rosberry.equatablegen;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rosberry.equator;
 				PRODUCT_NAME = "Swift Equatable Generator";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -535,7 +535,7 @@
 				INFOPLIST_FILE = SourceEditorExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rosberry.equatablegen.SourceEditorExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rosberry.equator.SourceEditorExtension;
 				PRODUCT_NAME = "Generate Swift Equatable";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -554,7 +554,7 @@
 				INFOPLIST_FILE = SourceEditorExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = com.rosberry.equatablegen.SourceEditorExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rosberry.equator.SourceEditorExtension;
 				PRODUCT_NAME = "Generate Swift Equatable";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -599,7 +599,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D5230B4F1D85660400504FFF /* Build configuration list for PBXProject "SwiftEquatableGenerator" */ = {
+		D5230B4F1D85660400504FFF /* Build configuration list for PBXProject "Equator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D5230B5F1D85660400504FFF /* Debug */,
@@ -608,7 +608,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D5230B611D85660400504FFF /* Build configuration list for PBXNativeTarget "SwiftEquatableGenerator" */ = {
+		D5230B611D85660400504FFF /* Build configuration list for PBXNativeTarget "Equator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D5230B621D85660400504FFF /* Debug */,
@@ -626,7 +626,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D55EA0BB1E0A568E005472E8 /* Build configuration list for PBXNativeTarget "SwiftEquatableGeneratorTests" */ = {
+		D55EA0BB1E0A568E005472E8 /* Build configuration list for PBXNativeTarget "EquatorTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D55EA0BC1E0A568E005472E8 /* Debug */,

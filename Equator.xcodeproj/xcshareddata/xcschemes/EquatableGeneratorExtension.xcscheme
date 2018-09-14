@@ -18,7 +18,7 @@
                BlueprintIdentifier = "D5230B671D85661200504FFF"
                BuildableName = "Generate Swift Equatable.appex"
                BlueprintName = "SourceEditorExtension"
-               ReferencedContainer = "container:SwiftEquatableGenerator.xcodeproj">
+               ReferencedContainer = "container:Equator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,8 +31,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D5230B531D85660400504FFF"
                BuildableName = "Swift Equatable Generator.app"
-               BlueprintName = "SwiftEquatableGenerator"
-               ReferencedContainer = "container:SwiftEquatableGenerator.xcodeproj">
+               BlueprintName = "Equator"
+               ReferencedContainer = "container:Equator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -50,7 +50,7 @@
             BlueprintIdentifier = "D5230B671D85661200504FFF"
             BuildableName = "Generate Swift Equatable.appex"
             BlueprintName = "SourceEditorExtension"
-            ReferencedContainer = "container:SwiftEquatableGenerator.xcodeproj">
+            ReferencedContainer = "container:Equator.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -79,7 +79,7 @@
             BlueprintIdentifier = "D5230B671D85661200504FFF"
             BuildableName = "Generate Swift Equatable.appex"
             BlueprintName = "SourceEditorExtension"
-            ReferencedContainer = "container:SwiftEquatableGenerator.xcodeproj">
+            ReferencedContainer = "container:Equator.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -98,8 +98,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D5230B531D85660400504FFF"
             BuildableName = "Swift Equatable Generator.app"
-            BlueprintName = "SwiftEquatableGenerator"
-            ReferencedContainer = "container:SwiftEquatableGenerator.xcodeproj">
+            BlueprintName = "Equator"
+            ReferencedContainer = "container:Equator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
