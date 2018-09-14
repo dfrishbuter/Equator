@@ -8,6 +8,14 @@
 
 **Equator** is useful extension for XCode IDE. This tool has a really simple mechanism, that allows to generate fully implemented `Equatable` protocol extensions for swift objects just in two clicks.
 
+# Installation 🏁
+
+1. Download and extract `.zip` file containing latest release from releases tap of the repo
+2. Drag Equator.app to your Applications folder and run the app
+3. Go to `System Preferences` -> `Extensions` -> `Xcode Source Editor` and enable the extension
+4. Restart the XCode
+5. Open XCode Editor menu. Here should be new item named **Equator**.
+
 # Author 🖌
 
 Dmitry Frishbuter, dmitry.frishbuter@gmail.com
