@@ -14,7 +14,19 @@
 2. Drag `Equator.app` to your Applications folder and run the app
 3. Go to `System Preferences` -> `Extensions` -> `Xcode Source Editor` and enable the extension
 4. Restart the XCode
-5. Open XCode Editor menu. Here should be new item named **Equator**.
+
+# Usage 🏄‍♂️
+
+Select all lines of target class/struct/enum body.
+
+```swift
+struct MyStruct {            <- Start of selection
+    public var a: String
+    public var b: Int
+}                            <- End of selection
+```
+
+Go to `Editor` -> `Equator` -> `Generate Swift Equatable`
 
 # Author ✍️
 
