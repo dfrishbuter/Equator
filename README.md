@@ -3,5 +3,5 @@
 </p>
 
 ![Swift4](https://img.shields.io/badge/Swift-4.0-orange.svg?style=flat")
-[![Platform](https://img.shields.io/cocoapods/p/SideMenuController.svg?style=flat)](http://cocoapods.org/pods/SideMenuController)
-[![License](https://img.shields.io/cocoapods/l/SideMenuController.svg?style=flat)](http://cocoapods.org/pods/SideMenuController)
+[![Platform](https://img.shields.io/badge/Platform-Mac%20OS-lightgrey.svg)
+[![License](https://img.shields.io/packagist/l/doctrine/orm.svg)
