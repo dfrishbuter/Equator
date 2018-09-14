@@ -1,3 +1,3 @@
 <p align="center">
-  <img src="img/equator.png" width="500" alt="Equator"/>
+  <img src="img/equator.png" width="600" alt="Equator"/>
 </p>
