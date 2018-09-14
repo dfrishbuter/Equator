@@ -14,4 +14,4 @@ Dmitry Frishbuter, dmitry.frishbuter@gmail.com
 
 # License 📃
 
-Tribulus is available under the MIT license. See the LICENSE file for more info.
+Equator is available under the MIT license. See the LICENSE file for more info.
