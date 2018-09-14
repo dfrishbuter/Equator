@@ -20,7 +20,7 @@
 Select all lines of target class/struct/enum body.
 
 ```swift
-struct User {            <- Start of selection
+struct User {                <- Start of selection
     public var name: String
     public var id: Int
 }                            <- End of selection
