@@ -16,7 +16,7 @@
 		D5230B6B1D85661200504FFF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5230B6A1D85661200504FFF /* Cocoa.framework */; };
 		D5230B701D85661200504FFF /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5230B6F1D85661200504FFF /* SourceEditorExtension.swift */; };
 		D5230B721D85661200504FFF /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5230B711D85661200504FFF /* SourceEditorCommand.swift */; };
-		D5230B761D85661200504FFF /* Generate Swift Equatable.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D5230B681D85661200504FFF /* Generate Swift Equatable.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D5230B761D85661200504FFF /* Equator.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D5230B681D85661200504FFF /* Equator.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D5230B7C1D85662E00504FFF /* NSScanner+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5230B7B1D85662E00504FFF /* NSScanner+Swift.swift */; };
 		D55EA0A11E0A5659005472E8 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55EA0A01E0A5659005472E8 /* Generator.swift */; };
 		D55EA0BE1E0A5695005472E8 /* Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55EA0A01E0A5659005472E8 /* Generator.swift */; };
@@ -47,7 +47,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				D5230B761D85661200504FFF /* Generate Swift Equatable.appex in Embed App Extensions */,
+				D5230B761D85661200504FFF /* Equator.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,7 +62,7 @@
 		D5230B591D85660400504FFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5230B5C1D85660400504FFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		D5230B5E1D85660400504FFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D5230B681D85661200504FFF /* Generate Swift Equatable.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Generate Swift Equatable.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5230B681D85661200504FFF /* Equator.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Equator.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5230B6A1D85661200504FFF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D5230B6E1D85661200504FFF /* SourceEditorExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SourceEditorExtension.entitlements; sourceTree = "<group>"; };
 		D5230B6F1D85661200504FFF /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				D5230B541D85660400504FFF /* Equator.app */,
-				D5230B681D85661200504FFF /* Generate Swift Equatable.appex */,
+				D5230B681D85661200504FFF /* Equator.appex */,
 				D55EA0B41E0A568E005472E8 /* EquatorTests.xctest */,
 			);
 			name = Products;
@@ -206,7 +206,7 @@
 			);
 			name = SourceEditorExtension;
 			productName = SourceEditorExtension;
-			productReference = D5230B681D85661200504FFF /* Generate Swift Equatable.appex */;
+			productReference = D5230B681D85661200504FFF /* Equator.appex */;
 			productType = "com.apple.product-type.xcode-extension";
 		};
 		D55EA0B31E0A568E005472E8 /* EquatorTests */ = {
@@ -536,7 +536,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rosberry.equator.SourceEditorExtension;
-				PRODUCT_NAME = "Generate Swift Equatable";
+				PRODUCT_NAME = Equator;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
@@ -555,7 +555,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rosberry.equator.SourceEditorExtension;
-				PRODUCT_NAME = "Generate Swift Equatable";
+				PRODUCT_NAME = Equator;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
