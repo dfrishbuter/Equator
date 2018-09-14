@@ -10,7 +10,7 @@
 
 # Installation 🏁
 
-1. Download and extract `.zip` file containing latest release from releases tap of the repo
+1. Download and extract `.zip` file containing latest release from the releases tab of the repo
 2. Drag Equator.app to your Applications folder and run the app
 3. Go to `System Preferences` -> `Extensions` -> `Xcode Source Editor` and enable the extension
 4. Restart the XCode
