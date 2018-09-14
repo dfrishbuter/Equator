@@ -7,3 +7,11 @@
 ![License](https://img.shields.io/packagist/l/doctrine/orm.svg)
 
 **Equator** is useful extension for XCode IDE. This tool has a really simple mechanism, that allows to generate fully implemented `Equatable` protocol extensions for swift objects just in two clicks.
+
+# Author 🖌
+
+Dmitry Frishbuter, dmitry.frishbuter@gmail.com
+
+# License 📃
+
+Tribulus is available under the MIT license. See the LICENSE file for more info.
